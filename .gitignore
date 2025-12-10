@@ -1,0 +1,24 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Dataset (Jangan upload dataset raw ke github karena besar)
+data/raw/
+data/processed/
+
+# Outputs (Model hasil training & logs)
+outputs/models/*.pth
+outputs/logs/
+outputs/plots/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Environment
+venv/
+env/
