@@ -6,10 +6,11 @@ Aplikasi ini dilengkapi dengan **Smart Crop Algorithm** untuk memotong area puti
 
 ## 📂 Struktur Project
 ```text
-sketch-classification/
+doodle-recognition/
 ├── src/         # Source code utama (Training, Models, Logic)
 ├── app/         # Source code GUI & Inference
-├── data/        # Folder dataset (Raw & Processed)
+├── data/        # Folder dataset 
 ├── notebooks/   # Eksperimen Jupyter Notebook
 ├── outputs/     # Hasil training (Model .pth & Logs)
+├── report/      # Dokumentasi berupa paper
 └── config/      # Konfigurasi Hyperparameter
