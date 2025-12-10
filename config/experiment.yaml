@@ -1,0 +1,29 @@
+# Konfigurasi Hyperparameter Eksperimen
+experiment_name: "initial_hybrid_training"
+
+data:
+  dataset_path: "data/raw/Doodle Dataset by Ashish Jangra/doodle"
+  img_size_dl: 64
+  img_size_ml: 32
+  batch_size: 32
+  selected_classes: 
+    - airplane
+    - candle
+    - car
+    - diamond
+    - fish
+
+training:
+  epochs: 20
+  learning_rate: 0.001
+  seed: 42
+  device: "cuda"
+
+models:
+  deep_learning:
+    - resnet18
+    - mobilenet_v2
+    - custom_cnn
+  machine_learning:
+    - random_forest
+    - svm
