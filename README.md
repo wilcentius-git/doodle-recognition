@@ -1,4 +1,4 @@
-# 🎨 Ultimate Sketch Battle: Smart Crop Edition
+# 🎨 Unified Sketch Classification System Using Deep Learning, Machine Learning, and Smart-Crop Preprocessing
 
 Project ini adalah aplikasi klasifikasi gambar sketsa (doodle) menggunakan pendekatan **Hybrid AI**: Deep Learning (CNN, ResNet, MobileNet) dan Machine Learning (Random Forest, SVM) dengan fitur ekstraksi manual.
 
@@ -14,3 +14,4 @@ doodle-recognition/
 ├── outputs/     # Hasil training (Model .pth & Logs)
 ├── report/      # Dokumentasi berupa paper
 └── config/      # Konfigurasi Hyperparameter
+
