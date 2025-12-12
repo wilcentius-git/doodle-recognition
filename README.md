@@ -1,4 +1,3 @@
-```markdown
 # 🎨 Unified Sketch Classification System Using Deep Learning, Machine Learning, and Smart-Crop Preprocessing
 
 Project ini adalah aplikasi klasifikasi gambar sketsa (doodle) menggunakan pendekatan **Hybrid AI**: Deep Learning (CNN, ResNet, MobileNet) dan Machine Learning (Random Forest, SVM) dengan fitur ekstraksi manual.
@@ -18,7 +17,7 @@ doodle-recognition/
 ```
 
 ---
-
+```markdown
 ## 🚀 Panduan Instalasi & Penggunaan
 
 Ikuti langkah-langkah berikut secara berurutan untuk menjalankan aplikasi ini di komputer Anda.
@@ -96,3 +95,4 @@ python main.py
 
 **Created for Deep Learning Course - AOL Project**
 ```
+
