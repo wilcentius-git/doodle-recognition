@@ -4,10 +4,10 @@ import torch.optim as optim
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-from .config import DEVICE, EPOCHS, LEARNING_RATE, SELECTED_CLASSES, MODEL_SAVE_PATH
-from .models_dl import TunedMLP, TunedCNN, get_resnet18, get_mobilenet_v2
-from .models_ml import get_rf_model, get_svm_model
-from .data_loader import get_dataloaders
+from src.config import DEVICE, EPOCHS, LEARNING_RATE, SELECTED_CLASSES, MODEL_SAVE_PATH
+from src.models_dl import TunedMLP, TunedCNN, get_resnet18, get_mobilenet_v2
+from src.models_ml import get_rf_model, get_svm_model
+from src.data_loader import get_dataloaders
 
 def train_all_models():
     train_loader, val_loader, X_ml, y_ml = get_dataloaders()
@@ -100,4 +100,5 @@ def train_all_models():
     
     print(f"\n>>> Menyimpan Model ke {MODEL_SAVE_PATH}...")
     torch.save(saved_states, MODEL_SAVE_PATH)
+
     print(">>> Selesai!")
