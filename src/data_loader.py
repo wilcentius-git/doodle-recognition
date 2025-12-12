@@ -6,8 +6,8 @@ from torch.utils.data import DataLoader, random_split
 from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
 
-from .src.config import DATASET_PATH, SELECTED_CLASSES, IMG_SIZE, BATCH_SIZE, IMG_SIZE_ML
-from .feature_engineering import extract_sketch_features
+from src.config import DATASET_PATH, SELECTED_CLASSES, IMG_SIZE, BATCH_SIZE, IMG_SIZE_ML
+from src.feature_engineering import extract_sketch_features
 
 # Custom Transform
 class InvertImage:
@@ -74,4 +74,5 @@ def get_dataloaders():
         X_ml.append(features)
         y_ml.append(target)
         
+
     return train_loader, val_loader, np.array(X_ml), np.array(y_ml)
