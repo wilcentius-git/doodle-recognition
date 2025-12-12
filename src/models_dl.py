@@ -1,6 +1,6 @@
 import torch.nn as nn
 from torchvision import models
-from .src.config import IMG_SIZE
+from src.config import IMG_SIZE
 
 class TunedMLP(nn.Module):
     def __init__(self, num_classes):
@@ -49,4 +49,5 @@ def get_mobilenet_v2(num_classes):
     model = models.mobilenet_v2(weights=None)
     model.features[0][0] = nn.Conv2d(1, 32, kernel_size=3, stride=2, padding=1, bias=False)
     model.classifier[1] = nn.Linear(model.classifier[1].in_features, num_classes)
+
     return model
