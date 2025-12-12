@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image, ImageOps
-from .src.config import IMG_SIZE
+from src.config import IMG_SIZE
 
 def preprocess_sketch_smart_crop(img_pil):
     """Preprocessing dengan smart crop"""
@@ -38,4 +38,5 @@ def preprocess_sketch_smart_crop(img_pil):
         print(f"Error preprocessing: {e}")
         import traceback
         traceback.print_exc()
+
         return img_pil
