@@ -94,5 +94,3 @@ python main.py
 ---
 
 **Created for Deep Learning Course - AOL Project**
-```
-
