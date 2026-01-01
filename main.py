@@ -2,7 +2,7 @@ import os
 import tkinter as tk
 import sys
 
-# Tambahkan root ke python path
+# Tambahkan root ke python path agar module src bisa dibaca
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from src.config import DEVICE, FORCE_RETRAIN, MODEL_SAVE_PATH
@@ -16,6 +16,7 @@ if __name__ == "__main__":
     
     model_exists = os.path.exists(MODEL_SAVE_PATH)
     
+    # Logic Training
     if FORCE_RETRAIN or not model_exists:
         print("\n=== MEMULAI TRAINING ULANG ===")
         try:
@@ -27,15 +28,18 @@ if __name__ == "__main__":
             traceback.print_exc()
             model_exists = False
 
-# BARU (Hapus scaler)
+    # Logic GUI
     if model_exists:
         print("\n=== MEMBUKA APLIKASI GUI ===")
         try:
-            # Scaler dihapus dari return value
+            # Load model (Tanpa Scaler, karena RF tidak butuh)
             dl_models, ml_models, classes = load_models_for_inference()
             
             root = tk.Tk()
-            # Scaler dihapus dari argumen
+            # Init App (Tanpa Scaler)
             app = SketchApp(root, dl_models, ml_models, classes)
             root.mainloop()
-
+        except Exception as e:
+            print(f"Error GUI: {e}")
+            import traceback
+            traceback.print_exc()
