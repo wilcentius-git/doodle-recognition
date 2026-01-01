@@ -27,16 +27,6 @@ if __name__ == "__main__":
             traceback.print_exc()
             model_exists = False
 
-# LAMA
-    if model_exists:
-        print("\n=== MEMBUKA APLIKASI GUI ===")
-        try:
-            dl_models, ml_models, scaler, classes = load_models_for_inference()
-            
-            root = tk.Tk()
-            app = SketchApp(root, dl_models, ml_models, scaler, classes)
-            root.mainloop()
-
 # BARU (Hapus scaler)
     if model_exists:
         print("\n=== MEMBUKA APLIKASI GUI ===")
@@ -48,3 +38,4 @@ if __name__ == "__main__":
             # Scaler dihapus dari argumen
             app = SketchApp(root, dl_models, ml_models, classes)
             root.mainloop()
+
