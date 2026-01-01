@@ -10,11 +10,13 @@ from src.feature_engineering import extract_sketch_features
 from src.smart_crop import preprocess_sketch_smart_crop
 
 class SketchApp:
-    def __init__(self, root, dl_models, ml_models, scaler, classes):
+    # HAPUS parameter 'scaler' dari sini
+    def __init__(self, root, dl_models, ml_models, classes):
         self.root = root
-        self.root.title("Ultimate Sketch Battle: Smart Crop Edition")
+        self.root.title("Ultimate Sketch Battle: CNN, ResNet & RF")
         self.dl_models = dl_models
         self.ml_models = ml_models
+        # self.scaler = scaler  <-- HAPUS INI
         self.classes = classes
         
         self.main_frame = tk.Frame(root, padx=10, pady=10)
@@ -52,10 +54,12 @@ class SketchApp:
             tk.Label(frame, text=name, font=("Arial", 9, "bold"), fg=color).pack(anchor="w")
             return self.create_bars(frame, color)
 
+        # HANYA TAMPILKAN CNN DAN RESNET
         tk.Label(self.result_frame, text="--- Deep Learning ---", font=("Arial", 8)).pack()
         self.bars["CNN (BatchNorm)"] = create_section("CNN (BatchNorm)", "purple")
         self.bars["ResNet18"] = create_section("ResNet18", "darkgreen")
         
+        # HANYA TAMPILKAN RANDOM FOREST
         tk.Label(self.result_frame, text="--- Machine Learning ---", font=("Arial", 8)).pack(pady=(10,0))
         self.bars["Random Forest"] = create_section("Random Forest", "brown")
 
@@ -115,19 +119,21 @@ class SketchApp:
             img_ml = processed_img.resize((IMG_SIZE_ML, IMG_SIZE_ML), Image.Resampling.LANCZOS)
             arr_ml = np.array(img_ml).flatten()
             features_ml = extract_sketch_features(arr_ml, IMG_SIZE_ML) 
-
+            
+            # Reshape untuk RF (Tanpa Scaler)
             arr_ml_rf = features_ml.reshape(1, -1)
 
-            # Predict DL
+            # Predict DL (CNN & ResNet)
             with torch.no_grad():
                 for name, model in self.dl_models.items():
                     output = model(tensor_dl)
                     probs = torch.nn.functional.softmax(output, dim=1)[0]
                     self.update_bars(self.bars[name], probs.cpu().numpy())
 
-            # Predict ML
+            # Predict ML (Random Forest Only)
             probs_rf = self.ml_models['Random Forest'].predict_proba(arr_ml_rf)[0]
             self.update_bars(self.bars['Random Forest'], probs_rf)
+        
             print("Prediksi selesai!")
             
         except Exception as e:
