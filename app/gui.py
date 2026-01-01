@@ -15,7 +15,6 @@ class SketchApp:
         self.root.title("Ultimate Sketch Battle: Smart Crop Edition")
         self.dl_models = dl_models
         self.ml_models = ml_models
-        self.scaler = scaler
         self.classes = classes
         
         self.main_frame = tk.Frame(root, padx=10, pady=10)
@@ -54,14 +53,11 @@ class SketchApp:
             return self.create_bars(frame, color)
 
         tk.Label(self.result_frame, text="--- Deep Learning ---", font=("Arial", 8)).pack()
-        self.bars["MLP (Dropout)"] = create_section("MLP (Dropout)", "blue")
         self.bars["CNN (BatchNorm)"] = create_section("CNN (BatchNorm)", "purple")
         self.bars["ResNet18"] = create_section("ResNet18", "darkgreen")
-        self.bars["MobileNetV2"] = create_section("MobileNetV2", "orange")
         
         tk.Label(self.result_frame, text="--- Machine Learning ---", font=("Arial", 8)).pack(pady=(10,0))
         self.bars["Random Forest"] = create_section("Random Forest", "brown")
-        self.bars["SVM"] = create_section("SVM (RBF Kernel)", "red")
 
     def create_bars(self, parent, color):
         bars = {}
@@ -119,9 +115,7 @@ class SketchApp:
             img_ml = processed_img.resize((IMG_SIZE_ML, IMG_SIZE_ML), Image.Resampling.LANCZOS)
             arr_ml = np.array(img_ml).flatten()
             features_ml = extract_sketch_features(arr_ml, IMG_SIZE_ML) 
-            
-            # Scale & Reshape
-            arr_ml_scaled = self.scaler.transform(features_ml.reshape(1, -1))
+
             arr_ml_rf = features_ml.reshape(1, -1)
 
             # Predict DL
@@ -134,10 +128,6 @@ class SketchApp:
             # Predict ML
             probs_rf = self.ml_models['Random Forest'].predict_proba(arr_ml_rf)[0]
             self.update_bars(self.bars['Random Forest'], probs_rf)
-
-            probs_svm = self.ml_models['SVM'].predict_proba(arr_ml_scaled)[0]
-            self.update_bars(self.bars['SVM'], probs_svm)
-        
             print("Prediksi selesai!")
             
         except Exception as e:
