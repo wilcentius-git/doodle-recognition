@@ -89,8 +89,9 @@ python main.py
 
 ## 🧠 Model List
 1. **Deep Learning:** MLP (Dropout), Custom CNN, ResNet18, MobileNetV2.
-2. **Machine Learning:** Random Forest, SVM (Linear Kernel).
+2. **Machine Learning:** Random Forest.
 
 ---
 
 **Created for Deep Learning Course - AOL Project**
+
