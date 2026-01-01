@@ -88,10 +88,11 @@ python main.py
 - **Hybrid Architecture**: Menggabungkan kekuatan Neural Network modern dengan algoritma ML klasik.
 
 ## 🧠 Model List
-1. **Deep Learning:** MLP (Dropout), Custom CNN, ResNet18, MobileNetV2.
+1. **Deep Learning:** Custom CNN, ResNet18.
 2. **Machine Learning:** Random Forest.
 
 ---
 
 **Created for Deep Learning Course - AOL Project**
+
 
