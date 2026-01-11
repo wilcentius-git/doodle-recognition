@@ -1,10 +1,6 @@
 import torch
 import os
 
-# ==========================================
-# KONFIGURASI
-# ==========================================
-
 # Asumsi kita menjalankan main.py dari root folder
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
