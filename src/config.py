@@ -21,7 +21,7 @@ FORCE_RETRAIN = False
 
 # Hyperparameters
 IMG_SIZE = 64
-BATCH_SIZE = 32
+BATCH_SIZE = 16
 EPOCHS = 20
 LEARNING_RATE = 0.001
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
